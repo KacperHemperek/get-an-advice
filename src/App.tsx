@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Card from "./components/Card";
+import { useCallback, useEffect, useState } from "react";
 
-function App() {
+type Slip = {
+  id: number;
+  advice: string;
+};
+
+const App = () => {
+  const [slip, setSlip] = useState<Slip>({} as Slip);
+
+  const getNewAdvice = useCallback(async () => {
+    try {
+      const res = await fetch("https://api.adviceslip.com/advice");
+      const data = (await res.json()).slip as Slip;
+
+      setSlip(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  useEffect(() => {
+    getNewAdvice();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Card getNewAdvice={getNewAdvice} advice={slip.advice} adviceId={slip.id} />
   );
-}
+};
 
 export default App;
