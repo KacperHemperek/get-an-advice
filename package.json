@@ -1,7 +1,7 @@
 {
   "name": "advice-app",
   "version": "0.1.0",
-  "homepage": "https://kacperhemperek.github.io/get-an-advice/",
+  "homepage": "get-an-advice.vercel.app",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
