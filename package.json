@@ -1,7 +1,7 @@
 {
   "name": "advice-app",
   "version": "0.1.0",
-  "homepage": "get-an-advice.vercel.app",
+  "homepage": "https://get-an-advice.vercel.app/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
